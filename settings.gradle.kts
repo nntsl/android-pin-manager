@@ -15,3 +15,10 @@ dependencyResolutionManagement {
 }
 rootProject.name = "PIN manager"
 include(":app")
+include(":core")
+include(":core:data")
+include(":core:database")
+include(":core:testing")
+include(":feature:pin")
+include(":core:domain")
+include(":core:model")
