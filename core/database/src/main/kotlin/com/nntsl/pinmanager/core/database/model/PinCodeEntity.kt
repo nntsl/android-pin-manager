@@ -16,6 +16,7 @@ data class PinCodeEntity(
 }
 
 fun PinCodeEntity.asExternalModel() = PinCode(
+    id = id,
     name = name,
     code = code
 )

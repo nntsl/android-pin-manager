@@ -40,7 +40,8 @@ android {
 
 dependencies {
     implementation(project(":core:data"))
-    implementation(project(":feature:pin"))
+    implementation(project(":feature:pincodes"))
+    implementation(project(":feature:createpin"))
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.ui)

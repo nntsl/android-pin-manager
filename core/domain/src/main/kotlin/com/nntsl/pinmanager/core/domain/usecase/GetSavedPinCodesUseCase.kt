@@ -9,6 +9,6 @@ class GetSavedPinCodesUseCase @Inject constructor(
     private val pinCodesRepository: PinCodesRepository
 ) {
     operator fun invoke(): Flow<List<PinCode>> {
-        return pinCodesRepository.getPinCodes()
+        return pinCodesRepository.savedPinCodes
     }
 }

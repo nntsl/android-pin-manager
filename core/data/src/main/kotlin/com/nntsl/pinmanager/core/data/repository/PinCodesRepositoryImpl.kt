@@ -15,12 +15,11 @@ class PinCodesRepositoryImpl @Inject constructor(
     private val localDataSource: PinCodesDao
 ) : PinCodesRepository {
 
-    override fun getPinCodes(): Flow<List<PinCode>> {
-        return localDataSource.getSavedPinCodes()
+    override val savedPinCodes: Flow<List<PinCode>> =
+        localDataSource.getSavedPinCodes()
             .map {
                 it.map(PinCodeEntity::asExternalModel)
             }
-    }
 
     override suspend fun savePinCode(name: String, code: String) {
         localDataSource.savePinCode(

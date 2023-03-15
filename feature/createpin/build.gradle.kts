@@ -5,9 +5,12 @@ plugins {
 }
 
 android {
-    namespace = "com.nntsl.pinmanager.feature.pin"
+    namespace = "com.nntsl.pinmanager.feature.createpin"
 }
 
 dependencies {
+    implementation(project(":core:model"))
+
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material)
 }

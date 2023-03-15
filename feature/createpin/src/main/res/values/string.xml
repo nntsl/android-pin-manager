@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="back">Back</string>
+    <string name="pin_name_hint">Enter PIN name</string>
+    <string name="pin_code">PIN: %s</string>
+    <string name="create">Create</string>
+    <string name="pin_name_already_exist">PIN with the same name already exists</string>
+</resources>

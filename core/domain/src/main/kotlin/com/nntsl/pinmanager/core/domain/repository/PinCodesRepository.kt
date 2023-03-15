@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface PinCodesRepository {
 
-    fun getPinCodes(): Flow<List<PinCode>>
+    val savedPinCodes: Flow<List<PinCode>>
 
     suspend fun savePinCode(name: String, code: String)
 
