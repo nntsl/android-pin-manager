@@ -21,8 +21,8 @@ class PinCodesRepositoryImpl @Inject constructor(
                 it.map(PinCodeEntity::asExternalModel)
             }
 
-    override suspend fun savePinCode(name: String, code: String) {
-        localDataSource.savePinCode(
+    override suspend fun savePinCode(name: String, code: String): Long {
+        return localDataSource.savePinCode(
             PinCodeEntity(
                 name = name,
                 code = code
@@ -30,7 +30,7 @@ class PinCodesRepositoryImpl @Inject constructor(
         )
     }
 
-    override suspend fun deletePinCode(id: Int) {
-        localDataSource.deletePinCode(id)
+    override suspend fun deletePinCode(id: Int): Int {
+        return localDataSource.deletePinCode(id)
     }
 }

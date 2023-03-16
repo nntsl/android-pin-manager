@@ -6,7 +6,7 @@ import javax.inject.Inject
 class SavePinCodeUseCase @Inject constructor(
     private val pinCodesRepository: PinCodesRepository
 ) {
-    suspend operator fun invoke(name: String, code: String) {
-        pinCodesRepository.savePinCode(name = name, code = code)
+    suspend operator fun invoke(name: String, code: String): Long {
+        return pinCodesRepository.savePinCode(name = name, code = code)
     }
 }

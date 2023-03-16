@@ -7,7 +7,7 @@ interface PinCodesRepository {
 
     val savedPinCodes: Flow<List<PinCode>>
 
-    suspend fun savePinCode(name: String, code: String)
+    suspend fun savePinCode(name: String, code: String): Long
 
-    suspend fun deletePinCode(id: Int)
+    suspend fun deletePinCode(id: Int): Int
 }

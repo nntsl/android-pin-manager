@@ -51,4 +51,7 @@ dependencies {
 
     androidTestImplementation(project(":core:testing"))
     androidTestImplementation(kotlin("test"))
+    androidTestImplementation(libs.androidx.navigation.testing)
+    debugImplementation(libs.androidx.compose.ui.testManifest)
+    debugImplementation(project(":ui-test-hilt"))
 }

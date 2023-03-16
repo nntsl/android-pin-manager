@@ -15,11 +15,11 @@ dependencyResolutionManagement {
 }
 rootProject.name = "PIN manager"
 include(":app")
-include(":core")
 include(":core:data")
 include(":core:database")
 include(":core:testing")
-include(":feature:pincodes")
 include(":core:domain")
 include(":core:model")
+include(":feature:pincodes")
 include(":feature:createpin")
+include(":ui-test-hilt")

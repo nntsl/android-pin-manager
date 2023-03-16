@@ -35,7 +35,7 @@ class PinViewModel @Inject constructor(
 sealed interface PinCodesUiState {
 
     data class Success(
-        val pinCodes: List<PinCode> = listOf()
+        val pinCodes: List<PinCode>
     ) : PinCodesUiState
 
     object Loading : PinCodesUiState

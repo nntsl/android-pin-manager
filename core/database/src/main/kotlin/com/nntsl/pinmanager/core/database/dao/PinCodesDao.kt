@@ -10,12 +10,12 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface PinCodesDao {
 
-    @Query(value = "SELECT * FROM pin_codes")
+    @Query(value = "SELECT * FROM pin_codes ORDER BY name")
     fun getSavedPinCodes(): Flow<List<PinCodeEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun savePinCode(pinCode: PinCodeEntity)
+    suspend fun savePinCode(pinCode: PinCodeEntity): Long
 
     @Query(value = "DELETE FROM pin_codes WHERE id = :id")
-    suspend fun deletePinCode(id: Int)
+    suspend fun deletePinCode(id: Int): Int
 }

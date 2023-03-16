@@ -2,7 +2,6 @@ package com.nntsl.pinmanager.feature.createpin
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
@@ -27,9 +26,9 @@ import com.nntsl.pinmanager.feature.createpin.R.string
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 internal fun CreatePinCodeScreen(
-    onBackClick: () -> Unit,
     modifier: Modifier = Modifier,
     uiState: CreatePinCodeUiState,
+    onBackClick: () -> Unit,
     updatePinName: (String) -> Unit,
     createPinCode: (String) -> Unit
 ) {
@@ -45,7 +44,7 @@ internal fun CreatePinCodeScreen(
                 modifier = modifier,
                 generatedPinCode = uiState.generatedPinCode,
                 enableCreateButton = uiState.enableCreateButton,
-                error = uiState.error,
+                isErrorName = uiState.isErrorName,
                 onBackClick = onBackClick,
                 onValueChanged = updatePinName,
                 createPinCode = createPinCode
@@ -84,7 +83,7 @@ internal fun CreatePinCodeScreen(
 private fun CreatePinCodeContent(
     modifier: Modifier = Modifier,
     generatedPinCode: String,
-    error: Int?,
+    isErrorName: Boolean,
     enableCreateButton: Boolean,
     onBackClick: () -> Unit,
     onValueChanged: (String) -> Unit,
@@ -132,9 +131,9 @@ private fun CreatePinCodeContent(
                     .padding(horizontal = 16.dp),
                 contentAlignment = Alignment.TopStart
             ) {
-                if (error != null) {
+                if (isErrorName) {
                     Text(
-                        text = stringResource(error),
+                        text = stringResource(string.pin_name_already_exist),
                         style = MaterialTheme.typography.bodySmall,
                         modifier = Modifier.padding(top = 4.dp),
                         color = MaterialTheme.colorScheme.error

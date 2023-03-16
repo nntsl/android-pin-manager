@@ -6,7 +6,7 @@ import javax.inject.Inject
 class DeletePinCodeUseCase @Inject constructor(
     private val pinCodesRepository: PinCodesRepository
 ) {
-    suspend operator fun invoke(id: Int) {
-        pinCodesRepository.deletePinCode(id)
+    suspend operator fun invoke(id: Int): Int {
+        return pinCodesRepository.deletePinCode(id)
     }
 }

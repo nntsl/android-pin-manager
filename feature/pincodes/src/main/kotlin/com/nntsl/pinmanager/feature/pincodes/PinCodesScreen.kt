@@ -19,8 +19,8 @@ import com.nntsl.pinmanager.feature.pincodes.R.string
 
 @Composable
 internal fun PinCodesScreen(
-    modifier: Modifier = Modifier,
     uiState: PinCodesUiState,
+    modifier: Modifier = Modifier,
     deletePinCode: (Int) -> Unit,
     navigateToCreatePinCode: () -> Unit
 ) {
@@ -48,6 +48,8 @@ internal fun PinCodesScreen(
             modifier = Modifier
                 .align(Alignment.BottomEnd)
                 .padding(16.dp)
+                .windowInsetsPadding(WindowInsets.safeDrawing)
+                .testTag("pinCodes:create")
         ) {
             Icon(
                 imageVector = Icons.Rounded.Add,
@@ -71,7 +73,9 @@ private fun LoadingState(modifier: Modifier = Modifier) {
 private fun EmptyState() {
     Text(
         text = stringResource(id = string.empty_header),
-        modifier = Modifier.padding(16.dp)
+        modifier = Modifier
+            .padding(16.dp)
+            .testTag("pinCodes:emptyTitle")
     )
 }
 

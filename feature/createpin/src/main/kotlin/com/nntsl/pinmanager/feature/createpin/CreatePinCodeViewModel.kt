@@ -1,5 +1,6 @@
 package com.nntsl.pinmanager.feature.createpin
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nntsl.pinmanager.core.domain.usecase.GetSavedPinCodesUseCase
@@ -16,7 +17,8 @@ class CreatePinCodeViewModel @Inject constructor(
     private val savePinCodeUseCase: SavePinCodeUseCase
 ) : ViewModel() {
 
-    private val viewModelState = MutableStateFlow(
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val viewModelState = MutableStateFlow(
         CreatePinCodeViewModelState()
     )
 
@@ -58,7 +60,7 @@ class CreatePinCodeViewModel @Inject constructor(
                 generatedPinCode = viewModelState.generatedPinCode,
                 name = currentName,
                 enableCreateButton = currentName.isNotEmpty() && !nameExist,
-                error = if (nameExist) R.string.pin_name_already_exist else null,
+                isErrorName = nameExist
             )
         }
     }
@@ -76,7 +78,8 @@ class CreatePinCodeViewModel @Inject constructor(
         }
     }
 
-    private fun setPinCode() {
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    fun setPinCode() {
         val pin = generatePinCode()
         viewModelState.update {
             it.copy(generatedPinCode = pin)
@@ -92,13 +95,13 @@ sealed interface CreatePinCodeUiState {
         val enableCreateButton: Boolean,
         val generatedPinCode: String,
         val name: String,
-        val error: Int?
+        val isErrorName: Boolean
     ) : CreatePinCodeUiState
 
     object Saved : CreatePinCodeUiState
 }
 
-private data class CreatePinCodeViewModelState(
+data class CreatePinCodeViewModelState(
     val generatedPinCode: String = "",
     val saved: Boolean = false
 )

@@ -11,6 +11,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.nntsl.pinmanager.feature.pincodes.R.string
@@ -24,11 +25,14 @@ fun PinCodeItem(
     val (expanded, onChangeExpandedState) = remember { mutableStateOf(false) }
 
     Box(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .testTag("pinCodes:item${name}")
     ) {
         DropdownMenu(
             expanded = expanded,
-            onDismissRequest = { onChangeExpandedState(!expanded) }
+            onDismissRequest = { onChangeExpandedState(!expanded) },
+            modifier = Modifier.testTag("pinCodes:item${name}:deleteMenu")
         ) {
             DropdownMenuItem(
                 text = { Text(stringResource(string.delete_pin_code)) },
@@ -39,6 +43,7 @@ fun PinCodeItem(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
+                .testTag("pinCodes:item${name}:content")
                 .padding(vertical = 4.dp)
                 .pointerInput(Unit) {
                     detectTapGestures(
